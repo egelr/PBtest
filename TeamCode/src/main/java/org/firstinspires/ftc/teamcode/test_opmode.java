@@ -6,7 +6,12 @@ import com.arcrobotics.ftclib.gamepad.GamepadEx;
 //import com.arcrobotics.ftclib.hardware.RevIMU;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.robot.Robot;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
+
 
 @TeleOp
 public class test_opmode extends LinearOpMode {
@@ -16,6 +21,7 @@ public class test_opmode extends LinearOpMode {
     // differences between them can be read here in the docs:
     // https://docs.ftclib.org/ftclib/features/drivebases#control-scheme
     static final boolean FIELD_CENTRIC = false;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -63,14 +69,62 @@ public class test_opmode extends LinearOpMode {
             // strafing speed, the forward speed, and the turning speed of the robot frame
             // respectively from [-1, 1].
 
-                drive.driveRobotCentric(
-                        driverOp.getLeftX(),
-                        driverOp.getLeftY(),
-                        driverOp.getRightX(),
-                        false
-                );
-            }
+            drive.driveRobotCentric(
+                    driverOp.getLeftX(),
+                    driverOp.getLeftY(),
+                    driverOp.getRightX(),
+                    false
+
+            );
 
         }
     }
+/*
+@TeleOp(name = "Encoder Test ")
+public class Encoder extends OpMode {
+    DcMotor armLiftMotor;
+    double ticksPerRevolution = 537.6; // Update this value with the correct value for your specific GoBilda motor
+    double newTarget;
+
+    @Override
+    public void init() {
+        armLiftMotor = hardwareMap.get(DcMotor.class, "motor");
+        telemetry.addData("Hardware: ", "Initialized");
+
+        // Set motor mode and reset encoder
+        armLiftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        armLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        // Set motor type for GoBilda 5202 series motor
+        armLiftMotor.setMotorType(MotorConfigurationType.getMotorType(MotorConfigurationType.MOTOR_TYPE_GOBILDA_5203_100));
+    }
+
+    @Override
+    public void loop() {
+        if (gamepad1.a) {
+            encoder(2);
+        }
+
+        telemetry.addData("Motor Ticks: ", armLiftMotor.getCurrentPosition());
+
+        if (gamepad1.b) {
+            tracker();
+        }
+    }
+
+    public void encoder(int turnage) {
+        newTarget = ticksPerRevolution / turnage;
+        armLiftMotor.setTargetPosition((int) newTarget);
+        armLiftMotor.setPower(0.3);
+        armLiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+
+    public void tracker() {
+        armLiftMotor.setTargetPosition(0);
+        armLiftMotor.setPower(0.8);
+        armLiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    }
+}
+*/
+}
 
