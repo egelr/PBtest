@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.arcrobotics.ftclib.drivebase.MecanumDrive;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
-//import com.arcrobotics.ftclib.hardware.RevIMU;
+import com.arcrobotics.ftclib.hardware.RevIMU;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -79,7 +79,7 @@ public class test_opmode extends LinearOpMode {
 
         }
     }
-/*
+
 @TeleOp(name = "Encoder Test ")
 public class Encoder extends OpMode {
     DcMotor armLiftMotor;
@@ -96,7 +96,7 @@ public class Encoder extends OpMode {
         armLiftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Set motor type for GoBilda 5202 series motor
-        armLiftMotor.setMotorType(MotorConfigurationType.getMotorType(MotorConfigurationType.MOTOR_TYPE_GOBILDA_5203_100));
+        //armLiftMotor.setMotorType(MotorConfigurationType.getMotorType(MotorConfigurationType.Motor.GoBILDA.RPM_60));
     }
 
     @Override
@@ -125,6 +125,6 @@ public class Encoder extends OpMode {
         armLiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 }
-*/
+
 }
 
