@@ -8,16 +8,16 @@ import org.firstinspires.ftc.teamcode.common.util.wrappers.WSubsystem;
 import org.jetbrains.annotations.NotNull;
  */
 import org.firstinspires.ftc.teamcode.common.centerstage.ClawSide;
-import org.firstinspires.ftc.teamcode.common.centerstage.Side;
+//import org.firstinspires.ftc.teamcode.common.centerstage.Side;
 import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
-import org.firstinspires.ftc.teamcode.common.util.MathUtils;
-import org.firstinspires.ftc.teamcode.common.util.wrappers.WSubsystem;
+//import org.firstinspires.ftc.teamcode.common.util.MathUtils;
+//import org.firstinspires.ftc.teamcode.common.util.wrappers.WSubsystem;
 import org.jetbrains.annotations.NotNull;
 public class IntakeSubsystem {
     private final RobotHardware robot;
 
     //    private ClawState clawState;
-    private PivotState pivotState;
+    //private PivotState pivotState;
 
     public ClawState leftClaw = ClawState.CLOSED;
     public ClawState rightClaw = ClawState.CLOSED;
@@ -54,7 +54,7 @@ public class IntakeSubsystem {
 //                this.clawState.replace(side, state);
                 break;
             case BOTH:
-                position = clawStatePosition(state, ClawSide.LEFT);
+                position = getClawStatePosition(state, ClawSide.LEFT);
                 robot.clawLeftServo.setPosition(position);
                 this.leftClaw = state;
                 position = getClawStatePosition(state, ClawSide.RIGHT);
@@ -66,7 +66,39 @@ public class IntakeSubsystem {
                 break;
         }
     }
+    private double getClawStatePosition(ClawState state, ClawSide side) {
+        switch (side) {
+            case LEFT:
+                switch (state) {
+                    case CLOSED:
+                        return 1.39;
+                    case INTERMEDIATE:
+                        return 0.13;
+                    case OPEN:
+                        return 0.7;
+                    default:
+                        return 0.0;
+                }
+            case RIGHT:
+                switch (state) {
+                    case CLOSED:
+                        return 1.39;
+                    case INTERMEDIATE:
+                        return 0.6; // 0.54
+                    case OPEN:
+                        return 0.7;
+                    default:
+                        return 0.0;
+                }
+            default:
+                return 0.0;
+        }
+    }
 
 
 
-}
+
+
+
+
+    }

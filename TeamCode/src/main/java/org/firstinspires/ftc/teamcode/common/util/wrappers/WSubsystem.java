@@ -1,7 +1,8 @@
 package org.firstinspires.ftc.teamcode.common.util.wrappers;
+
 import com.arcrobotics.ftclib.command.SubsystemBase;
 
-public class WSubsystem {
+public abstract class WSubsystem extends SubsystemBase {
 
     public abstract void periodic();
     public abstract void read();

@@ -1,15 +1,20 @@
 package org.firstinspires.ftc.teamcode.common.util.wrappers;
 
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.SimpleServo;
 
 public class WServo implements Servo {
 
     private Servo clawAngleServo;
+    private Servo clawRightServo;
+    private Servo clawLeftServo;
     private double offset = 0.0;
 
     public WServo(Servo servo) {
@@ -90,4 +95,7 @@ public class WServo implements Servo {
     }
 
 
+
+
 }
+
