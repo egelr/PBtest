@@ -83,7 +83,7 @@ public class Arm extends LinearOpMode {
 
             if (gamepad1.square) {
           //      sp = 0.02;
-                m_motor_2.setTargetPosition(1000);
+                m_motor_2.setTargetPosition(800);
 
                 telemetry.addData("share", "lllll");
                 telemetry.addData("Status ", m_motor.getCurrentPosition());

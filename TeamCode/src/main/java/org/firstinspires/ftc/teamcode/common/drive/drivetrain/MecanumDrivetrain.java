@@ -1,25 +1,27 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.common.drive.drivetrain;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
 import com.arcrobotics.ftclib.drivebase.MecanumDrive;
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
 import com.arcrobotics.ftclib.hardware.RevIMU;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
+import com.arcrobotics.ftclib.drivebase.RobotDrive;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+//import org.firstinspires.ftc.teamcode.common.hardware.RobotHardware;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.robot.Robot;
-import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+//import org.firstinspires.ftc.teamcode.common.util.wrappers.WSubsystem;
+//import org.firstinspires.ftc.teamcode.common.drive.pathing.geometry.Pose;
+//import org.firstinspires.ftc.teamcode.common.drive.pathing.geometry.Vector2D;
 
-
-@TeleOp
-public class test_opmode extends LinearOpMode {
-    static final boolean FIELD_CENTRIC = false;
-
+import java.util.Arrays;
+public class MecanumDrivetrain extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
+
+
         // constructor takes in frontLeft, frontRight, backLeft, backRight motors
         // IN THAT ORDER
         MecanumDrive drive = new MecanumDrive(
@@ -28,9 +30,6 @@ public class test_opmode extends LinearOpMode {
                 new Motor(hardwareMap, "dtBackLeftMotor", Motor.GoBILDA.RPM_312),
                 new Motor(hardwareMap, "dtBackRightMotor", Motor.GoBILDA.RPM_312)
         );
-
-
-        GamepadEx driverOp = new GamepadEx(gamepad1);
 
 
         waitForStart();
@@ -47,10 +46,6 @@ public class test_opmode extends LinearOpMode {
 
         }
 
-
-
     }
 
-
 }
-
