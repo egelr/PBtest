@@ -29,6 +29,10 @@ public class SimpleServo implements ServoEx {
     public SimpleServo(HardwareMap hw, String servoName, double minDegree, double maxDegree) {
         this(hw, servoName, minDegree, maxDegree, AngleUnit.DEGREES);
     }
+
+    public SimpleServo(Servo clawAngleServo) {
+    }
+
     @Override
     public void rotateByAngle(double angle, AngleUnit angleUnit) {
         angle = getAngle(angleUnit) + angle;

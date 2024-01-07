@@ -27,32 +27,20 @@ public class Arm extends LinearOpMode {
         telemetry.update();
         m_motor.setRunMode(Motor.RunMode.PositionControl);
         m_motor_2.setRunMode(Motor.RunMode.PositionControl);
-        //m_motor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.FLOAT);
-
-// set and get the position coefficient
         m_motor.setPositionCoefficient(0.05);
         double kP = m_motor.getPositionCoefficient();
         m_motor_2.setPositionCoefficient(0.05);
         double kP_2 = m_motor_2.getPositionCoefficient();
 
-
-        //m_motor_2.setInverted(true);
         int pos = m_motor.getCurrentPosition();
-        //m_motor.setTargetPosition(pos);
         m_motor.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
 
         m_motor_2.setInverted(true);
-        //int pos_2 = m_motor_2.getCurrentPosition();
         m_motor_2.resetEncoder();
-        //m_motor_2.getInverted(false);
-        //int targetPos_2 = pos_2;
-        //m_motor_2.setTargetPosition(pos_2);
         m_motor_2.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         m_motor_2.set(0);
-// set the tolerance
         m_motor.setPositionTolerance(30);
-        m_motor_2.setPositionTolerance(5);// allowed maximum error
-        //GamepadEx myGamepad = new Gamepad(gamepad1);
+        m_motor_2.setPositionTolerance(5);
         double sp = 0.02;
         telemetry.addData("Status m2", m_motor_2.getCurrentPosition());
         telemetry.update();
@@ -86,7 +74,7 @@ public class Arm extends LinearOpMode {
                 m_motor_2.setTargetPosition(800);
 
                 telemetry.addData("share", "lllll");
-                telemetry.addData("Status ", m_motor.getCurrentPosition());
+                telemetry.addData("Status ", m_motor_2.getCurrentPosition());
                 telemetry.update();
             }
 
@@ -94,7 +82,7 @@ public class Arm extends LinearOpMode {
             //    sp = 0.02;
                 m_motor_2.setTargetPosition(0);
                 telemetry.addData("options", "llll");
-                telemetry.addData("Status ", m_motor.getCurrentPosition());
+                telemetry.addData("Status ", m_motor_2.getCurrentPosition());
                 telemetry.update();
                 //sp = 3;
                 //m_motor_2.setRunMode(Motor.RunMode.RawPower);
@@ -112,9 +100,8 @@ public class Arm extends LinearOpMode {
             }
 
 
-            m_motor.stopMotor(); // stop the motor
-            m_motor_2.stopMotor(); // stop the motor
-        //m_motor_2.stopMotor();
+            m_motor.stopMotor();
+            m_motor_2.stopMotor();
             sleep(10);
         }
 

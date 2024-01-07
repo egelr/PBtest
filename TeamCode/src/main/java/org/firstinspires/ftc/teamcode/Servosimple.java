@@ -18,9 +18,6 @@ public class Servosimple extends LinearOpMode {
     private final double minPosition = 0;
     @Override
     public void runOpMode() throws InterruptedException {
-        // Initialize hardware
-        //myServo = new SimpleServo(hardwareMap, "myServo", 0, 180);
-
 
         clawAngleServo = new SimpleServo(
                 hardwareMap, "ClawAngleServo", 10, 120,
